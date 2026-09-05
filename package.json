@@ -1,0 +1,11 @@
+{
+  "name": "readme-motion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Create animated GitHub profile heroes in under 60 seconds.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check src/app.js && node --check src/svg-generator.js"
+  }
+}

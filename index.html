@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Design and export animated SVG heroes for your GitHub profile README." />
+    <meta name="theme-color" content="#070b18" />
+    <title>README Motion — Animated GitHub profile heroes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="README Motion home">
+        <span class="brand-mark">RM</span>
+        <span>README Motion</span>
+        <span class="beta">BETA</span>
+      </a>
+      <nav>
+        <a href="#templates">Templates</a>
+        <a href="https://github.com/Loccao102/readme-motion" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">ANIMATED SVG · ZERO DESIGN SKILLS</p>
+        <h1>Make your GitHub profile<br /><span>move differently.</span></h1>
+        <p class="intro-copy">Create an animated README hero in under 60 seconds. Customize it, preview it live, and export a lightweight SVG — no account required.</p>
+      </section>
+
+      <section class="studio" aria-label="README hero editor">
+        <aside class="controls">
+          <div class="panel-heading">
+            <div><span class="step">01</span><h2>Make it yours</h2></div>
+            <button id="resetButton" class="ghost-button" type="button">Reset</button>
+          </div>
+
+          <div class="field-grid">
+            <label class="field wide"><span>Eyebrow</span><input data-field="eyebrow" maxlength="30" value="HELLO, I'M" /></label>
+            <label class="field wide"><span>Your name</span><input data-field="name" maxlength="42" value="CAO TIẾN LỘC" /></label>
+            <label class="field wide"><span>One-line promise</span><input data-field="tagline" maxlength="88" value="I build software for the moment things get difficult." /></label>
+            <label class="field wide"><span>Topics</span><input data-field="topics" maxlength="88" value=".NET / REAL-TIME / DATA / RELIABILITY" /></label>
+            <label class="field"><span>Primary</span><span class="color-wrap"><input data-field="primary" type="color" value="#38bdf8" /><output data-color-output="primary">#38BDF8</output></span></label>
+            <label class="field"><span>Secondary</span><span class="color-wrap"><input data-field="secondary" type="color" value="#a78bfa" /><output data-color-output="secondary">#A78BFA</output></span></label>
+            <label class="field"><span>Animation</span><select data-field="motion"><option value="smooth">Smooth</option><option value="calm">Calm</option><option value="energetic">Energetic</option><option value="none">None</option></select></label>
+            <label class="field"><span>Corner icon</span><select data-field="icon"><option value="terminal">Terminal</option><option value="cow">Bò Làm Dev</option><option value="brackets">Code brackets</option><option value="spark">Spark</option><option value="none">None</option></select></label>
+            <label class="field wide upload"><span>Avatar or mascot <small>optional · embedded in SVG</small></span><input id="avatarInput" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" /><span class="upload-label">Choose image</span></label>
+          </div>
+        </aside>
+
+        <div class="preview-panel">
+          <div class="panel-heading preview-heading"><div><span class="step">02</span><h2>Live preview</h2></div><span id="sizeLabel" class="size-label">1200 × 360</span></div>
+          <div class="canvas"><img id="preview" alt="Your animated GitHub README hero preview" /></div>
+          <div class="snippet"><code id="markdownSnippet">&lt;img width="100%" src="./assets/hero.svg" /&gt;</code><button id="copyMarkdown" type="button">Copy Markdown</button></div>
+          <div class="actions">
+            <button id="downloadSvg" class="primary-button" type="button">Download SVG</button>
+            <button id="copySvg" class="secondary-button" type="button">Copy SVG</button>
+            <button id="exportConfig" class="secondary-button" type="button">Export config</button>
+            <label class="secondary-button file-button">Import config<input id="importConfig" type="file" accept="application/json" /></label>
+          </div>
+        </div>
+      </section>
+
+      <section id="templates" class="templates-section">
+        <div class="section-title"><div><span class="step">03</span><h2>Start with a personality</h2></div><p>Each template changes the composition, not just the colors.</p></div>
+        <div id="templateGrid" class="template-grid"></div>
+      </section>
+
+      <section class="how-it-works">
+        <div class="section-title"><div><span class="step">04</span><h2>From canvas to profile</h2></div></div>
+        <ol><li><span>1</span><div><b>Design</b><p>Pick a template and make it unmistakably yours.</p></div></li><li><span>2</span><div><b>Export</b><p>Download a standalone, lightweight animated SVG.</p></div></li><li><span>3</span><div><b>Ship</b><p>Add it to your repository and paste one Markdown line.</p></div></li></ol>
+      </section>
+    </main>
+
+    <footer><div class="brand"><span class="brand-mark">RM</span><span>README Motion</span></div><p>Open source. Built by <a href="https://github.com/Loccao102">Cao Tiến Lộc</a>.</p></footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

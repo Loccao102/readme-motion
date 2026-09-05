@@ -1,0 +1,5 @@
+import test from"node:test";import assert from"node:assert/strict";import{buildSvg,escapeXml,sanitizeConfig}from"../src/svg-generator.js";
+test("escapes user-controlled SVG text",()=>{assert.equal(escapeXml(`<script a="b">&`),"&lt;script a=&quot;b&quot;&gt;&amp;");const svg=buildSvg({name:"<script>alert(1)</script>"});assert.ok(!svg.includes("<script>"));assert.ok(svg.includes("&lt;script&gt;"));});
+test("rejects unsafe colors and avatar sources",()=>{const config=sanitizeConfig({primary:"red;stroke:black",secondary:"#ABCDEF",avatar:"javascript:alert(1)"});assert.equal(config.primary,"#38bdf8");assert.equal(config.secondary,"#ABCDEF");assert.equal(config.avatar,null);});
+test("supports a no-motion export",()=>{const svg=buildSvg({motion:"none"});assert.ok(!svg.includes("<animate "));assert.ok(svg.startsWith("<svg"));assert.ok(svg.endsWith("</svg>"));});
+test("keeps the exported canvas GitHub-friendly",()=>{const svg=buildSvg();assert.match(svg,/viewBox="0 0 1200 360"/);assert.ok(!svg.includes("<script"));assert.ok(!svg.includes("foreignObject"));});
